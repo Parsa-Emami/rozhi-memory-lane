@@ -54,13 +54,18 @@ jobs:
       - name: Generate Laravel key
         run: php artisan key:generate --force
 
-      - name: Clean npm cache
+      - name: Prepare npm
         run: |
+          npm install -g npm@10
+          npm --version
+          node --version
+          npm config set audit false
+          npm config set fund false
           npm cache clean --force
           rm -rf node_modules
 
       - name: Install Node dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install --legacy-peer-deps --no-audit --no-fund
 
       - name: Build Vite assets
         run: npm run build
@@ -82,6 +87,7 @@ jobs:
         run: |
           php -r '
           $base = "http://127.0.0.1:8000";
+          $domain = "https://parsa-emami.github.io/rozhi-memory-lane";
 
           $pages = [
               "/" => "index.html",
@@ -106,8 +112,8 @@ jobs:
                   exit(1);
               }
 
-              $html = str_replace("http://127.0.0.1:8000", "https://parsa-emami.github.io/rozhi-memory-lane", $html);
-              $html = str_replace("http://localhost", "https://parsa-emami.github.io/rozhi-memory-lane", $html);
+              $html = str_replace($base, $domain, $html);
+              $html = str_replace("http://localhost", $domain, $html);
 
               $path = "_site/" . $file;
               $dir = dirname($path);
