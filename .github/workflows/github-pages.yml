@@ -34,11 +34,6 @@ jobs:
           coverage: none
           tools: composer
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: "22"
-
       - name: Prepare Laravel environment
         run: |
           cp .env.example .env
@@ -54,21 +49,13 @@ jobs:
       - name: Generate Laravel key
         run: php artisan key:generate --force
 
-      - name: Prepare npm
+      - name: Check built Vite assets
         run: |
-          npm install -g npm@10
-          npm --version
-          node --version
-          npm config set audit false
-          npm config set fund false
-          npm cache clean --force
-          rm -rf node_modules
-
-      - name: Install Node dependencies
-        run: npm install --legacy-peer-deps --no-audit --no-fund
-
-      - name: Build Vite assets
-        run: npm run build
+          if [ ! -d "public/build" ]; then
+            echo "ERROR: public/build does not exist."
+            echo "Run npm install && npm run build locally, then commit public/build with git add -f public/build"
+            exit 1
+          fi
 
       - name: Prepare static output folder
         run: |
@@ -114,6 +101,9 @@ jobs:
 
               $html = str_replace($base, $domain, $html);
               $html = str_replace("http://localhost", $domain, $html);
+              $html = str_replace("href=\"/", "href=\"/rozhi-memory-lane/", $html);
+              $html = str_replace("src=\"/", "src=\"/rozhi-memory-lane/", $html);
+              $html = str_replace("content=\"/", "content=\"/rozhi-memory-lane/", $html);
 
               $path = "_site/" . $file;
               $dir = dirname($path);
