@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f9a8c4"/>
+      <stop offset="1" stop-color="#f7ead8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="80" fill="url(#g)"/>
+  <circle cx="220" cy="180" r="110" fill="rgba(255,255,255,.32)"/>
+  <circle cx="980" cy="620" r="150" fill="rgba(255,255,255,.22)"/>
+  <text x="600" y="350" text-anchor="middle" font-size="92" font-family="Arial" fill="#5f4636">🧁</text>
+  <text x="600" y="460" text-anchor="middle" font-size="54" font-family="Arial" font-weight="700" fill="#5f4636">Pink Cafe</text>
+</svg>

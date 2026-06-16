@@ -1,0 +1,19 @@
+{
+  "name": "Rozhi Coffee Plan",
+  "short_name": "Rozhi Plan",
+  "description": "A clean coffee, guitar and short road trip invite page.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fff7fb",
+  "theme_color": "#11101a",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

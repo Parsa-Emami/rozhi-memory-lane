@@ -1,0 +1,317 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-cozy text-cocoa bg-cafe dark:bg-night dark:text-white overflow-x-hidden min-h-screen;
+  }
+
+  ::selection {
+    @apply bg-blush-200 text-cocoa;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply min-h-screen relative overflow-hidden;
+  }
+
+  .mesh-orb {
+    @apply pointer-events-none fixed rounded-full blur-3xl opacity-60 dark:opacity-40;
+    z-index: 0;
+  }
+
+  .mesh-orb-one {
+    @apply -right-24 top-24 h-72 w-72 bg-blush-200/70 dark:bg-blush-400/25;
+  }
+
+  .mesh-orb-two {
+    @apply -left-24 bottom-24 h-80 w-80 bg-softPurple/70 dark:bg-softPurple/25;
+  }
+
+  .glass-card {
+    @apply rounded-[2rem] border border-white/60 bg-white/60 backdrop-blur-xl shadow-soft
+           dark:border-white/10 dark:bg-white/10 dark:shadow-nightGlow;
+  }
+
+  .cute-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-night px-6 py-3
+           font-black text-white shadow-glow transition hover:-translate-y-1 hover:bg-blush-400
+           active:scale-95 dark:bg-blush-300 dark:text-night;
+  }
+
+  .secondary-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-cocoa/15 bg-white/50
+           px-5 py-3 font-bold text-cocoa transition hover:-translate-y-1 hover:bg-white/80
+           dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/15;
+  }
+
+  .brand-mark {
+    @apply flex items-center gap-3 font-black tracking-tight;
+  }
+
+  .brand-icon {
+    @apply grid h-12 w-12 place-items-center overflow-hidden rounded-2xl bg-white/80 shadow-glow dark:bg-white/10;
+  }
+
+  .brand-icon img {
+    @apply h-11 w-11 object-cover;
+  }
+
+  .nav-link {
+    @apply rounded-full px-4 py-2 text-sm font-bold text-cocoa/80 transition hover:-translate-y-0.5 hover:bg-white/60
+           dark:text-white/80 dark:hover:bg-white/10;
+  }
+
+  .nav-link-strong {
+    @apply bg-night text-white hover:bg-blush-400 dark:bg-blush-300 dark:text-night;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-5xl font-black tracking-tight;
+  }
+
+  .cozy-input {
+    @apply w-full rounded-3xl border border-white/70 bg-white/70 px-5 py-4 outline-none
+           focus:ring-4 focus:ring-blush-200 dark:border-white/10 dark:bg-white/10 dark:text-white;
+  }
+
+  .star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: .6;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  .hero-phone {
+    @apply mx-auto max-w-md rotate-[-2deg] transition hover:rotate-0;
+  }
+
+  .hero-list-item {
+    @apply rounded-3xl border border-white/10 bg-white/10 p-4 font-black transition hover:-translate-y-1 hover:bg-white/20;
+  }
+
+  .mini-plan-card {
+    @apply rounded-[1.5rem] border border-white/60 bg-white/60 p-4 text-center shadow-soft transition hover:-translate-y-2 hover:bg-white/80 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/15;
+  }
+
+  .mini-plan-card span {
+    @apply block text-4xl;
+  }
+
+  .mini-plan-card strong {
+    @apply mt-3 block text-lg font-black;
+  }
+
+  .mini-plan-card small {
+    @apply mt-1 block text-xs font-bold text-cocoa/60 dark:text-white/60;
+  }
+
+  .spin-display {
+    @apply rounded-[2rem] border border-white/60 bg-white/50 p-6 transition dark:border-white/10 dark:bg-white/10;
+  }
+
+  .spin-display.is-spinning {
+    animation: popSpin .55s ease both;
+  }
+
+  .spin-card {
+    @apply transition hover:-translate-y-2;
+  }
+
+  .timeline-item {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: all .8s ease;
+  }
+
+  .timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .memory-modal {
+    @apply fixed inset-0 z-50 hidden items-center justify-center bg-night/70 p-4 backdrop-blur-sm;
+  }
+
+  .memory-modal.is-open {
+    @apply flex;
+  }
+
+  .quiz-option {
+    @apply flex cursor-pointer items-center gap-3 rounded-3xl border border-white/70 bg-white/60 p-4 font-bold transition
+           hover:-translate-y-1 hover:bg-blush-100
+           dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/15;
+  }
+
+  .quiz-option input {
+    @apply h-5 w-5 accent-current;
+  }
+
+  .cat-companion {
+    @apply fixed bottom-5 right-5 z-30 hidden items-center gap-3 rounded-full border border-white/60 bg-white/70 px-3 py-2 text-xs font-black shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-white/10 md:flex;
+  }
+
+  .cat-companion img {
+    @apply h-12 w-12 rounded-full;
+  }
+
+  .music-dock {
+    @apply fixed bottom-5 left-5 z-30 flex max-w-[250px] items-center gap-3 rounded-full border border-white/60 bg-white/75 px-3 py-2 shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-white/10;
+  }
+
+  .music-button {
+    @apply grid h-11 w-11 shrink-0 place-items-center rounded-full bg-night font-black text-white transition hover:scale-105 dark:bg-blush-300 dark:text-night;
+  }
+
+  .music-dock.is-playing .music-button {
+    @apply animate-paw bg-blush-400 text-night;
+  }
+
+  .prose p {
+    @apply leading-9;
+  }
+}
+
+@keyframes popSpin {
+  0% { transform: scale(.96) rotate(-1deg); opacity: .55; }
+  55% { transform: scale(1.03) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@layer components {
+  .safe-x {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .app-surface {
+    @apply relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/65 shadow-soft backdrop-blur-2xl dark:border-white/10 dark:bg-white/10;
+  }
+
+  .touch-target {
+    min-height: 48px;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.page-shell {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.cute-button,
+.secondary-button,
+.nav-link,
+.music-button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.music-dock {
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  left: max(1.25rem, env(safe-area-inset-left));
+}
+
+.cat-companion {
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  right: max(1.25rem, env(safe-area-inset-right));
+}
+
+.memory-card,
+.spin-card,
+.mini-plan-card,
+.glass-card {
+  will-change: transform;
+}
+
+@media (max-width: 767px) {
+  .section-title {
+    font-size: clamp(2.1rem, 9vw, 3.2rem);
+    line-height: 1.18;
+  }
+
+  .glass-card {
+    border-radius: 1.55rem;
+  }
+
+  .hero-phone {
+    max-width: min(100%, 390px);
+    transform: none !important;
+  }
+
+  .hero-phone > .glass-card,
+  .hero-phone.glass-card {
+    padding: .75rem;
+  }
+
+  .cute-button,
+  .secondary-button {
+    min-height: 48px;
+    padding-inline: 1.15rem;
+  }
+
+  .nav-link {
+    display: flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.15rem;
+    background: rgba(255,255,255,.36);
+  }
+
+  .dark .nav-link {
+    background: rgba(255,255,255,.08);
+  }
+
+  .music-dock {
+    left: max(.8rem, env(safe-area-inset-left));
+    right: max(.8rem, env(safe-area-inset-right));
+    bottom: calc(.8rem + env(safe-area-inset-bottom));
+    max-width: none;
+    width: auto;
+    border-radius: 1.5rem;
+    justify-content: flex-start;
+    padding: .65rem .75rem;
+  }
+
+  .music-button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+
+  footer {
+    padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (min-width: 390px) and (max-width: 430px) {
+  .brand-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.05rem;
+  }
+
+  .brand-icon img {
+    width: 2.65rem;
+    height: 2.65rem;
+  }
+
+  .music-dock {
+    box-shadow: 0 18px 42px rgba(95, 70, 54, .18);
+  }
+}

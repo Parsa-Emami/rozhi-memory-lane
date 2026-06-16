@@ -1,0 +1,2 @@
+Copy your local file H:\rozhin.jpg into this directory and rename/keep it as public/images/rozhin.jpg.
+The app reads it from /images/rozhin.jpg via ROZHI_CAT_IMAGE.
