@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'rozhi/memory-lane',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '83ad9026d1e0fe48aa31a26fc082329a6968edd7',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -825,9 +825,9 @@
             ),
         ),
         'rozhi/memory-lane' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '83ad9026d1e0fe48aa31a26fc082329a6968edd7',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
